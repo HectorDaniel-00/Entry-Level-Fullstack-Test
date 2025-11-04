@@ -111,18 +111,29 @@ The React app will run on `http://localhost:3000`
 ## Technologies Used
 
 ### Backend
-- Node.js
-- Express.js
-- PostgreSQL
-- Sequelize ORM
-- JSON Web Tokens (JWT)
-- dotenv
+- [Node.js](https://nodejs.org/docs/) - JavaScript runtime
+- [Express](https://expressjs.com/) - Web application framework
+- [PostgreSQL](https://www.postgresql.org/docs/) - Relational database (via [pg](https://node-postgres.com/) driver)
+- [Sequelize](https://sequelize.org/docs/v6/) - ORM for Node.js
+- [Sequelize CLI](https://sequelize.org/docs/v6/other-topics/migrations/) - Database migrations and seeding
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme) - JSON Web Token implementation
+- [dotenv](https://github.com/motdotla/dotenv#readme) - Environment variable management
+
+### Backend Development Tools
+- [Jest](https://jestjs.io/docs/getting-started) - Testing framework
+- [SuperTest](https://github.com/ladjs/supertest#readme) - HTTP assertions for testing
+- [ESLint](https://eslint.org/docs/latest/) - Linting tool
+- [eslint-config-standard](https://github.com/standard/eslint-config-standard) - Standard JavaScript style guide
 
 ### Frontend
-- React
-- Create React App
-- React Hook Form - [Documentation](https://react-hook-form.com/)
-- Material-UI (MUI)
+- [React](https://react.dev/) - JavaScript library for building user interfaces
+- [React DOM](https://react.dev/reference/react-dom) - React package for working with the DOM
+- [React Scripts](https://create-react-app.dev/docs/getting-started) - Configuration and scripts for Create React App
+- [React Router DOM](https://reactrouter.com/) - Declarative routing for React
+- [React Hook Form](https://react-hook-form.com/) - Performant form validation library
+- [Material-UI (MUI)](https://mui.com/material-ui/getting-started/) - React component library
+- [@emotion/react](https://emotion.sh/docs/introduction) - Library for writing CSS styles with JavaScript
+- [@emotion/styled](https://emotion.sh/docs/styled) - Styled component API for Emotion
 
 ## Frontend Development Patterns
 
