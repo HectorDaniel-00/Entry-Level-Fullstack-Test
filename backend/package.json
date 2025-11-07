@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "node index.js",
+    "sequelize": "sequelize-ts",
+    "dev": "npx ts-node-dev --respawn --transpile-only src/index.ts",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "lint": "eslint ."
   },
@@ -22,6 +23,10 @@
   },
   "devDependencies": {
     "@jest/globals": "30.2.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
+    "@types/sequelize": "^4.28.20",
     "eslint": "8.57.1",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.32.0",
@@ -29,6 +34,9 @@
     "eslint-plugin-promise": "6.6.0",
     "jest": "30.2.0",
     "sequelize-cli": "6.6.3",
-    "supertest": "7.0.0"
+    "supertest": "7.0.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
   }
 }
