@@ -170,6 +170,14 @@ For more information about Sequelize and migrations, visit the [Sequelize docume
 
 The React app will run on `http://localhost:3001`
 
+### 🐳 Docker
+
+1. To launch the entire application using Docker Compose:
+
+```
+docker-compose up --build
+```
+
 ### Form Handling
 
 This project uses **React Hook Form** with the `Controller` component pattern for form inputs. This pattern is preferred for better integration with Material-UI components and controlled form state management.
