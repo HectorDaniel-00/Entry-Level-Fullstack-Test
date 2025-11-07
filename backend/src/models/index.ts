@@ -13,5 +13,5 @@ const syncDB = async () => {
     console.error(" Error synchronizing database:", error);
   }
 };
-
+export { sequelize, User };
 export default syncDB;
