@@ -3,7 +3,7 @@ export class ResponseUserDto {
 
   name?: string;
 
-  id_card?: number;
-
   email?: string;
+
+  active?: boolean;
 }
