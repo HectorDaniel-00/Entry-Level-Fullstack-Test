@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import { sequelize } from "./models/user.js";
+import syncDB from "./models";
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -20,6 +20,13 @@ app.use("/auth");
 
 const start = async () => {
   try {
-    await sequelize.authenticate();
-  } catch (error) {}
+    await syncDB();
+
+    app.listen(port, () => {
+      console.log(`Server runnig on http//localhost:${port}`);
+    });
+  } catch (error) {
+    console.error("Error", error);
+    process.exit(1);
+  }
 };

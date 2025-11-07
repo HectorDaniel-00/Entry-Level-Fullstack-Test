@@ -52,7 +52,7 @@ services:
       - backend
   # Servicio de la base de datos PostgreSQL
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     ports:
       - "${POSTGRES_LOCAL}:${POSTGRES_PORT}"
     container_name: ${DB_CONTAINER_NAME}
