@@ -1,8 +1,11 @@
 import "dotenv/config";
 import express from "express";
+import fs from "fs";
+import swaggerui from "swagger-ui-express";
 import syncDB from "./models";
 import RouterPrivate from "./routes/user-routes";
 import RouterPublic from "./routes/auth-routes";
+import { swaggerSchemasUser } from "./schemas/swaggerSchemas";
 
 const app = express();
 const port = process.env.BACKEND_LOCAL || 3001;
@@ -18,7 +21,17 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/users", RouterPrivate);
-app.use("/auth");
+app.use("/auth", RouterPublic);
+
+const swaggerDocument = JSON.parse(
+  fs.readFileSync("./src/swagger/swagger.json", "utf-8")
+);
+
+swaggerDocument.components = swaggerDocument.components || {};
+swaggerDocument.components.schemas = {
+  ...(swaggerDocument.components.schemas || {}),
+  ...swaggerSchemasUser,
+};
 
 const start = async () => {
   try {
