@@ -1,9 +1,11 @@
 import "dotenv/config";
 import express from "express";
 import syncDB from "./models";
+import RouterPrivate from "./routes/user-routes";
+import RouterPublic from "./routes/auth-routes";
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.BACKEND_LOCAL || 3001;
 
 app.use(express.json());
 
@@ -15,7 +17,7 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-app.use("/users");
+app.use("/users", RouterPrivate);
 app.use("/auth");
 
 const start = async () => {
