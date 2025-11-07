@@ -6,9 +6,9 @@ export const createUserDao = async (
 ): Promise<ResponseUserDto> => {
   const query = await User.create({
     name: data.name,
-    id_card: data.id_card,
     email: data.email,
     password: data.password,
+    active: true,
   });
   return query.toJSON() as ResponseUserDto;
 };

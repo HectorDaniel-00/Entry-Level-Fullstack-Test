@@ -5,6 +5,8 @@ const envConfig = {
   DB_USER: process.env.POSTGRES_USER as string,
   DB_PASSWORD: process.env.POSTGRES_PASSWORD as string,
   DB_HOST: process.env.POSTGRES_HOST as string,
+
+  JWT_SECRET: process.env.JWT_PRIVATE_SECRET as string,
 };
 
 export default envConfig;
