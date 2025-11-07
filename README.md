@@ -1,8 +1,38 @@
-# Entry-Level-Fullstack-Test
+# 🧑‍💻 Entry-Level Fullstack Test — Gases del Caribe
 
-A simple fullstack application with Node.js/Express backend and React frontend.
+This project was developed by **Héctor Vargas** as part of the technical test for the position **Fullstack Developer (Entry Level)** in **Gases del Caribe**.  
+The application allows users**registrarse, iniciar sesión, actualizar su información personal y gestionar su perfil** de forma segura.
 
-## Project Structure
+Project repository: [GitHub - HectorDaniel-00](https://github.com/HectorDaniel-00/Entry-Level-Fullstack-Test)
+
+---
+
+## 🚀 Technologies used
+
+### Frontend
+
+- ⚛️ **React**
+- 🎨 **Material UI**
+- 🧩 **react-hook-form**
+- 🔄 (Optional) **TanStack Query** — handling asynchronous requests and global data status.
+
+### Backend
+
+- 🟢 **Node.js + Express**
+- 🗃️ **Sequelize** (ORM)
+- 🧠 **PostgreSQL** (Main database)
+
+### Testing
+
+- 🧪 **Jest**
+
+### DevOps / Opcional
+
+- 🐳 **Docker & Docker Compose**
+
+---
+
+## 🧰 Project structure
 
 ```
 ├── backend/                # Node.js + Express backend
@@ -39,37 +69,65 @@ A simple fullstack application with Node.js/Express backend and React frontend.
 ### Backend
 
 1. Navigate to the backend directory:
+
    ```bash
    cd backend
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Create a `.env` file based on `.env.example`:
+
    ```bash
    cp .env.example .env
    ```
 
 4. Update the `.env` file with your database credentials and JWT secret:
+
    ```
-   DB_HOST=localhost
-   DB_PORT=5432
-   DB_NAME=mydatabase
-   DB_USER=myuser
-   DB_PASSWORD=mypassword
-   PORT=3001
-   JWT_SECRET=your-secret-key-here
+
+   BACKEND_CONTAINER_NAME=
+   BACKEND_LOCAL=
+   BACKEND_HOST=
+   BACKEND_PORT=
+   NODE_ENV=
+   BACKEND_CPU_LIMIT=
+   BACKEND_MEMORY_LIMIT=
+
+   FRONTEND_CONTAINER_NAME=
+   FRONTED_HOST=
+   FRONTEND_LOCAL=
+   FRONTEND_PORT=
+   FRONTEND_CPU_LIMIT=
+   FRONTEND_MEMORY_LIMIT=
+
+   DB_CONTAINER_NAME=
+   POSTGRES_LOCAL=
+   POSTGRES_HOST=
+   POSTGRES_PORT=
+   POSTGRES_USER=
+   POSTGRES_PASSWORD=
+   POSTGRES_DB=
+   DB_CPU_LIMIT=
+   DB_MEMORY_LIMIT=
+
+   JWT_PRIVATE_SECRET=
+   EXPIRES_TOKEN=
+   REFRESH_TOKEN=
    ```
 
 5. Create the database using Sequelize CLI:
+
    ```bash
    npx sequelize-cli db:create
    ```
 
 6. Run migrations to create the database tables:
+
    ```bash
    npx sequelize-cli db:migrate
    ```
@@ -82,21 +140,25 @@ A simple fullstack application with Node.js/Express backend and React frontend.
 The backend server will run on `http://localhost:3001`
 
 Available endpoints:
+
 - `GET /` - Welcome message
 - `GET /api/health` - Health check endpoint
 - `GET /users` - Get all users
 - `POST /auth/login` - Generate JWT token (returns token with fixed userId: -1)
+- `POST /auth/register`- Registration of new users
 
 For more information about Sequelize and migrations, visit the [Sequelize documentation](https://sequelize.org/docs/v6/)
 
 ### Frontend
 
 1. Navigate to the frontend directory:
+
    ```bash
    cd frontend
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -106,55 +168,39 @@ For more information about Sequelize and migrations, visit the [Sequelize docume
    npm start
    ```
 
-The React app will run on `http://localhost:3000`
+The React app will run on `http://localhost:3001`
 
-## Technologies Used
+### 🐳 Docker
 
-### Backend
-- [Node.js](https://nodejs.org/docs/) - JavaScript runtime
-- [Express](https://expressjs.com/) - Web application framework
-- [PostgreSQL](https://www.postgresql.org/docs/) - Relational database (via [pg](https://node-postgres.com/) driver)
-- [Sequelize](https://sequelize.org/docs/v6/) - ORM for Node.js
-- [Sequelize CLI](https://sequelize.org/docs/v6/other-topics/migrations/) - Database migrations and seeding
-- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme) - JSON Web Token implementation
-- [dotenv](https://github.com/motdotla/dotenv#readme) - Environment variable management
+1. To launch the entire application using Docker Compose:
 
-### Backend Development Tools
-- [Jest](https://jestjs.io/docs/getting-started) - Testing framework
-- [SuperTest](https://github.com/ladjs/supertest#readme) - HTTP assertions for testing
-- [ESLint](https://eslint.org/docs/latest/) - Linting tool
-- [eslint-config-standard](https://github.com/standard/eslint-config-standard) - Standard JavaScript style guide
-
-### Frontend
-- [React](https://react.dev/) - JavaScript library for building user interfaces
-- [React DOM](https://react.dev/reference/react-dom) - React package for working with the DOM
-- [React Scripts](https://create-react-app.dev/docs/getting-started) - Configuration and scripts for Create React App
-- [React Router DOM](https://reactrouter.com/) - Declarative routing for React
-- [React Hook Form](https://react-hook-form.com/) - Performant form validation library
-- [Material-UI (MUI)](https://mui.com/material-ui/getting-started/) - React component library
-- [@emotion/react](https://emotion.sh/docs/introduction) - Library for writing CSS styles with JavaScript
-- [@emotion/styled](https://emotion.sh/docs/styled) - Styled component API for Emotion
-
-## Frontend Development Patterns
+```
+docker-compose up --build
+```
 
 ### Form Handling
+
 This project uses **React Hook Form** with the `Controller` component pattern for form inputs. This pattern is preferred for better integration with Material-UI components and controlled form state management.
 
 Example:
+
 ```jsx
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller } from "react-hook-form";
 
 const { control, handleSubmit } = useForm();
 
 <Controller
   name="email"
   control={control}
-  rules={{ required: 'Email is required' }}
-  render={({ field }) => (
-    <TextField {...field} label="Email" />
-  )}
-/>
+  rules={{ required: "Email is required" }}
+  render={({ field }) => <TextField {...field} label="Email" />}
+/>;
 ```
+
+### main functionalities
+
+```
+
 
 For more information, visit the [React Hook Form documentation](https://react-hook-form.com/).
 
@@ -180,3 +226,4 @@ The project uses Sequelize CLI for database management. Here are some useful com
 - **Create a new migration**: `npx sequelize-cli migration:generate --name migration-name`
 
 Learn more about Sequelize at [https://sequelize.org/docs/v6/](https://sequelize.org/docs/v6/)
+```
