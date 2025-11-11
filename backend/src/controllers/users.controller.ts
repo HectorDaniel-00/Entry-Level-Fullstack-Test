@@ -1,5 +1,5 @@
 import express from "express";
-import * as usersService from "../services/users.service.js";
+import * as usersService from "../services/users.service";
 import { Request, Response } from "express";
 
 export const search = async (req: Request, res: Response) => {

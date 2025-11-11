@@ -8,7 +8,7 @@ services:
     ports:
       - "${BACKEND_LOCAL}:${BACKEND_PORT}"
     volumes:
-      - ./app-backend:/usr/src/backend/app-backend
+      - ./backend:/usr/src/backend
       - ./.env:/usr/src/backend/.env
       - /usr/src/backend/node_modules
     env_file:
@@ -17,7 +17,7 @@ services:
       - NODE_ENV=${NODE_ENV}
       - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:${POSTGRES_PORT}/${POSTGRES_DB}
     depends_on:
-      - db
+      - db-gases-caribe
     deploy:
       resources:
         limits:
@@ -38,7 +38,7 @@ services:
     environment:
       - VITE_API_URL=http://backend:${BACKEND_PORT}
     volumes:
-      - ./frontend:/usr/src/app
+      - ./frontend:/usr/src/frontend
       - ./.env:/usr/src/frontend/.env
       - /usr/src/app/node_modules
     env_file:
@@ -51,7 +51,7 @@ services:
     networks:
       - backend
   # Servicio de la base de datos PostgreSQL
-  db:
+  db-gases-caribe:
     image: postgres:16-alpine
     ports:
       - "${POSTGRES_LOCAL}:${POSTGRES_PORT}"
@@ -62,7 +62,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_gases_caribe:/var/lib/postgresql/data
     deploy:
       resources:
         limits:
@@ -72,7 +72,7 @@ services:
       - backend
 
 volumes:
-  db_data:
+  db_gases_caribe:
 
 networks:
   backend:

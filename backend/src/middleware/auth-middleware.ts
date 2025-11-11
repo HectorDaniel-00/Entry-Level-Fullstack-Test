@@ -9,11 +9,11 @@ export interface AuthRequest extends Request {
   };
 }
 
-export const authenticate = (
+export const authenticate = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-): void => {
+): Promise<void> => {
   try {
     const token = req.headers.authorization?.split(" ")[1];
 
@@ -24,8 +24,12 @@ export const authenticate = (
       return;
     }
 
-    const decoded = jwt.verify(token, envConfig.JWT_SECRET || "secret") as {
+    const decoded = (await jwt.verify(
+      token,
+      envConfig.JWT_SECRET || "secret"
+    )) as {
       id: number;
+      name: string;
       email: string;
     };
 

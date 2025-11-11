@@ -14,15 +14,22 @@ export const register = async (data: AuthRegisterDto) => {
     );
   }
 
-  const hashPassword = bcrypt.hash(data.password, 10);
+  const hashPassword = await bcrypt.hash(data.password, 10);
+
   const newUser = {
+    name: data.name,
     email: data.email,
     password: hashPassword,
   };
+  const user = await User.create(newUser);
 
   return {
     message: "user created successfully",
-    newUser,
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    },
   };
 };
 
@@ -39,6 +46,7 @@ export const login = async (email: string, password: string) => {
   }
   const token = generateToken({
     id: user.id,
+    name: user.name,
     email: user.email,
   });
 

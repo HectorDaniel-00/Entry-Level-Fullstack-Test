@@ -5,6 +5,7 @@ const SECRET = envConfig.JWT_SECRET;
 
 interface Payload {
   id: number;
+  name: string;
   email: string;
 }
 

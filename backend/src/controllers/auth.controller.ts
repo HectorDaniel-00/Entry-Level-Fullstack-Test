@@ -1,7 +1,7 @@
 import express from "express";
-import * as authService from "../services/auth.service.js";
+import * as authService from "../services/auth.service";
 import { Request, Response } from "express";
-import { CreateUserDto } from "../dto/index.js";
+import { CreateUserDto } from "../dto";
 
 export const login = async (req: Request, res: Response) => {
   try {
